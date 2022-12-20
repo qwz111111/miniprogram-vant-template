@@ -1,0 +1,2 @@
+@import './style/root.wxss';
+@import './style/base.wxss';
