@@ -11,16 +11,16 @@ import { baseURL } from './config'
 export const request = (url, data, isLoad = true, method = 'POST') => {
   // 错误提示
   const errToast = err => {
-    isLoad && uni.hideLoading()
-    uni.showModal({
+    isLoad && wx.hideLoading()
+    wx.showModal({
       title: '温馨提示',
       content: err
     })
   }
   // 获取id
   const getId = () => {
-    if (uni.getStorageSync('userInfo')) {
-      return JSON.parse(uni.getStorageSync('userInfo')).m
+    if (wx.getStorageSync('userInfo')) {
+      return JSON.parse(wx.getStorageSync('userInfo')).m
     }
     return ''
   }
@@ -36,9 +36,9 @@ export const request = (url, data, isLoad = true, method = 'POST') => {
   }
 
   return new Promise((resolve, reject) => {
-    isLoad && uni.showLoading({ title: '加载中……', mask: true })
+    isLoad && wx.showLoading({ title: '加载中……', mask: true })
 
-    uni.request({
+    wx.request({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       url: `${baseURL}${url}`,
       method: method,
@@ -62,7 +62,7 @@ export const request = (url, data, isLoad = true, method = 'POST') => {
         reject(err)
       },
       complete() {
-        isLoad && uni.hideLoading()
+        isLoad && wx.hideLoading()
       }
     })
   })
