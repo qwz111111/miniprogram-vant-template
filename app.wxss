@@ -1,2 +1,6 @@
 @import './style/root.wxss';
 @import './style/base.wxss';
+page {
+  font-size: var(--font-size-base);
+  color: var(--text-color-inverse);
+}
